@@ -1,4 +1,4 @@
-# promptmaster
+# Prompt Master
 This tool breaks down the "Four Pillars" of a perfect prompt (Persona, Task, Context, Format) as outlined in your guide, includes a "Prompt Builder" playground, and a quiz to test retention.
 PromptMaster Training App
 
