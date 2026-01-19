@@ -1,31 +1,28 @@
-# Prompt Master
-This tool breaks down the "Four Pillars" of a perfect prompt (Persona, Task, Context, Format) as outlined in your guide, includes a "Prompt Builder" playground, and a quiz to test retention.
-PromptMaster Training App
+# PromptMaster - GCP Deployment
 
-This interactive React application is designed to train administrative professionals on how to write effective prompts for Gemini, based on the Gemini for Google Workspace Prompting Guide 101.
+This project is a React application designed to teach Prompt Engineering. It is containerized using Docker and Nginx, ready for deployment on Google Cloud Run.
 
-Features
+## Local Setup
 
-1. The Framework (Learning Mode)
-A visual breakdown of the "4 Pillars of a Perfect Prompt" as described in the guide:
-Persona: Who the AI is acting as.
-Task: The core action/verb.
-Context: Background information and constraints.
-Format: The desired output structure.
+1.  Install dependencies:
+    ```bash
+    npm install
+    ```
+2.  Run locally:
+    ```bash
+    export VITE_GEMINI_API_KEY="your_api_key"
+    npm run dev
+    ```
 
-2. Prompt Builder (Workshop Mode)
-An interactive form that allows users to practice constructing a prompt.
-Users fill in individual fields for the 4 pillars.
-The app dynamically assembles these inputs into a cohesive prompt string.
-Color-coding helps users visualize how the different parts fit together.
+## Cloud Run Deployment
 
-3. Knowledge Check (Quiz Mode)
-A multiple-choice quiz to test retention of key concepts from the guide, such as:
-The optimal length of a prompt.
-How to reference files (using the @ symbol).
-The importance of iteration.
-
-How to Use
-Navigate through the tabs at the top (The Framework, Prompt Builder, Quiz).
-Use the Builder to draft real prompts for your daily tasks.
-Copy the generated prompt directly to your clipboard for use in Gemini.
+1.  **Build and Deploy:**
+    ```bash
+    gcloud run deploy prompt-master \
+      --source . \
+      --platform managed \
+      --region us-central1 \
+      --allow-unauthenticated \
+      --port 8080 \
+      --set-env-vars VITE_GEMINI_API_KEY=YOUR_API_KEY
+    ```
